@@ -47,7 +47,7 @@
           <li v-for="(comment, index) in food.rating.comment_list" :key="index" class="comment-item">
             <div class="comment-header">
               <img :src="comment.user_icon" v-if="comment.user_icon">
-              <img src="../assets/img/ratingImg/anonymity.png" v-if="!comment.user_icon">
+              <img src="../assets/img/anonymity.png" v-if="!comment.user_icon">
             </div>
             <div class="comment-main">
               <div class="user">{{comment.user_name}}</div>
@@ -68,10 +68,12 @@ import Shopcart from '../components/Shopcart';
 import Split from '../components/Split';
 import Cartcontrol from '../components/Cartcontrol';
 import BScroll from 'better-scroll';
+
 export default {
   data () {
     return {
       foodScroll: null,
+      // img: require('../assets/img/anonymity.png')
     }
   },
   components: {

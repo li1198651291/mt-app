@@ -249,7 +249,7 @@ export default {
   height: 13px;
   padding-left: 7px;
   margin-bottom: 12px;
-  background: url("../assets/img/goodsImg/btn_yellow_highlighted@2x.png")
+  background: url("../assets/img/btn_yellow_highlighted@2x.png")
     no-repeat left center;
   background-size: 2px 10px;
   font-size: 13px;

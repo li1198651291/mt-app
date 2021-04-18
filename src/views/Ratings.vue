@@ -33,8 +33,8 @@
           <span class="item" @click="selectType(1)"
             :class="{'active': type == 1}">{{ratings.tab[1].comment_score_title}}</span>
           <span class="item" @click="selectType(2)" :class="{'active': type == 2}">
-            <img src="../assets/img/ratingImg/icon_sub_tab_dp_normal@2x.png" alt="" v-show="type !== 2">
-            <img src="../assets/img/ratingImg/icon_sub_tab_dp_highlighted@2x.png" alt="" v-show="type == 2">
+            <img src="../assets/img/icon_sub_tab_dp_normal@2x.png" alt="" v-show="type !== 2">
+            <img src="../assets/img/icon_sub_tab_dp_highlighted@2x.png" alt="" v-show="type == 2">
             {{ratings.tab[2].comment_score_title}}
           </span>
         </div>
@@ -50,7 +50,7 @@
             <li v-for="(comment, index) in selectComments" :key="index" class="comment-item">
               <div class="comment-header">
                 <img :src="comment.user_pic_url" v-if="comment.user_pic_url">
-                <img src="../assets/img/ratingImg/anonymity.png" v-if="!comment.user_pic_url">
+                <img src="../assets/img/anonymity.png" v-if="!comment.user_pic_url">
               </div>
               <div class="comment-main">
                 <div class="user">{{comment.user_name}}</div>
@@ -210,6 +210,7 @@ export default {
   color: #ffb000;
 }
 .ratings .overview .overview-right {
+  flex: 0 0 80px;
   height: 45px;
   border-left: 1px solid #9d9d9d;
   color: #999999;

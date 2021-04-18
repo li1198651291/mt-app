@@ -1,7 +1,5 @@
 import { createStore } from 'vuex';
 import axios from 'axios';
-import { nextTick } from 'vue'
-axios.defaults.baseURL = 'http://localhost:8080/'
 
 export default createStore({
   state: {
@@ -17,12 +15,6 @@ export default createStore({
     poiInfo (state) {
       return state.goods.poi_info
     },
-    // operation (state) {
-    //   return state.goods.container_operation_source
-    // },
-    // foodSpuTags (state) {
-    //   return state.goods.food_spu_tags
-    // },
     selectedFoods (state) {
       let result = [];
       if (state.goods.food_spu_tags) {

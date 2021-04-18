@@ -9,8 +9,8 @@
   <!-- <router-view></router-view> -->
 </template>
 <script>
-import Header from './components/Header';
-import Nav from './components/Nav'
+import Header from 'components/Header';
+import Nav from 'components/Nav'
 import { mapActions } from 'vuex';
 
 export default {
