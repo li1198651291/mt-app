@@ -36,7 +36,7 @@
     </div>
     <transition v-show="isShow" name="bulletin">
       <div class="bulletin-detail">
-        <div class="bulletin-wrapper">
+        <div class="detail-wrapper">
           <div class="main-wrapper" :style="poi_back_pic_url">
             <div class="top-icon" :style="pic_url"></div>
             <h3 class="name">{{poiInfo.name}}</h3>
@@ -133,7 +133,7 @@ export default {
 }
 .top-wrapper .search-wrapper {
   height: 31px;
-  padding: 0 100px 0 50px;
+  padding: 0 130px 0 50px;
 }
 .search-wrapper .searchIcon {
   position: absolute;
@@ -143,7 +143,7 @@ export default {
   text-align: center;
 }
 .search-wrapper .search {
-  width: 200px;
+  width: 100%;
   height: 29px;
   padding-left: 28px;
   border: none;
@@ -213,6 +213,10 @@ export default {
   color: #fff;
   font-size: 11px;
 }
+.bulletin-wrapper img {
+  width: 16px;
+  height: 16px;
+}
 .bulletin-wrapper span {
   margin-left: 6px;
 }
@@ -230,14 +234,14 @@ export default {
   background-color: rgba(98, 98, 98, 0.8);
   z-index: 100;
 }
-.bulletin-detail .bulletin-wrapper {
+.bulletin-detail .detail-wrapper {
   position: relative;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
   padding: 43px 20px 125px;
 }
-.bulletin-wrapper .main-wrapper {
+.detail-wrapper .main-wrapper {
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -304,7 +308,7 @@ export default {
   line-height: 16px;
   color: white;
 }
-.bulletin-wrapper .close-btn {
+.detail-wrapper .close-btn {
   display: inline-block;
   position: absolute;
   bottom: 60px;

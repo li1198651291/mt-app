@@ -231,16 +231,17 @@ export default {
   padding: 16px;
 }
 .ratings .content .rating-select {
+  box-sizing: border-box;
   width: 100%;
   margin-bottom: 11px;
   border: 1px solid #ffb000;
   border-right: 0;
   border-radius: 3px;
-  font-size: 0;
 }
 .ratings .content .rating-select .item {
   display: inline-block;
-  width: 33%;
+  box-sizing: border-box;
+  width: 33.3%;
   height: 33px;
   border-right: 1px solid #ffb000;
   line-height: 33px;
