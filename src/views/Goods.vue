@@ -56,10 +56,7 @@
         </li>
       </ul>
     </div>
-    <div class="shopcart">
-      <Shopcart></Shopcart>
-    </div>
-    <div class="food"></div>
+    <Shopcart></Shopcart>
   </div>
 
 </template>
@@ -98,10 +95,9 @@ export default {
       }
     },
     currentIndex () {
-      for (let i = 0; i < this.listHeight.length; i++) {
-        let height1 = this.listHeight[i]
-        let height2 = this.listHeight[i + 1]
-
+      for (let i = 0; i < this.listHeight.length - 1; i++) {
+        let height1 = this.listHeight[i];
+        let height2 = this.listHeight[i + 1];
         if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
           return i
         }
@@ -131,20 +127,15 @@ export default {
     },
     calculateHeight () {
       let foodList = document.querySelectorAll(".food-list-hook");
-      // let foodList = this.$refs.foodScroll.getElementsByClassName('food-list-hook');
-      console.log(foodList)
       if (foodList.length !== 0) {
         let height = 0;
         this.listHeight = [];
         this.listHeight.push(height);
         for (let i = 0; i < foodList.length; i++) {
           let item = foodList[i];
-          console.log(item)
-          console.log(item.clientHeight)
           height += item.clientHeight;
-          this.listHeight.push(height)
+          this.listHeight.push(height);
         }
-        console.log(this.listHeight)
       }
     },
     selectMenu (index) {
@@ -156,23 +147,31 @@ export default {
       this.$router.push({ name: "GoodDetail", params: { id: id } });
     }
   },
+  watch: {
+    goods (data) {
+      this.$nextTick(() => {
+        this.menuScroll.refresh();
+        this.foodScroll.refresh();
+        this.calculateHeight();
+      })
+      
+    }
+  },
   mounted () {
-    console.log("mounted")
     this.initScroll();
     this.calculateHeight();
   },
-  updated () {
-    console.log("updated")
-    this.menuScroll.refresh();
-    this.foodScroll.refresh();
-    if (this.listHeight.length == 0) {
-      this.calculateHeight();
-    }
-  }
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@mixin wrap($num) {
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .goods {
   display: flex;
   position: absolute;
@@ -180,130 +179,119 @@ export default {
   bottom: 51px;
   width: 100%;
   overflow: hidden;
+  .menu-wrapper {
+    flex: 0 0 85px;
+    background: #f4f4f4;
+    .menu-item {
+      position: relative;
+      padding: 16px 23px 15px 10px;
+      border-bottom: 1px solid #e4e4e4;
+      &.current {
+        margin-top: -1px;
+        background: white;
+        font-weight: bold;
+      }
+      &:first-child.current {
+        margin-top: 1px;
+      }
+      img {
+        width: 15px;
+        height: 15px;
+        vertical-align: middle;
+      }
+      .text {
+        line-height: 17px;
+        color: #333333;
+        font-size: 13px;
+        @include wrap(2);
+      }
+      .num {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: red;
+        line-height: 13px;
+        color: white;
+        font-size: 7px;
+        text-align: center;
+      }
+    }
+  }
+  .foods-wrapper {
+    flex: 1;
+    .operation-list {
+      padding: 11px 11px 0 11px;
+      border-bottom: 1px solid #e4e4e4;
+      height: 205px;
+      img {
+        width: 100%;
+        margin-bottom: 11px;
+        border-radius: 5px;
+      }
+    }
+    .food-list {
+      padding: 11px;
+      .title {
+        height: 13px;
+        padding-left: 7px;
+        margin-bottom: 12px;
+        background: url("../assets/img/btn_yellow_highlighted@2x.png") no-repeat
+          left center;
+        background-size: 2px 10px;
+        font-size: 13px;
+      }
+      .food-item {
+        display: flex;
+        position: relative;
+        margin-bottom: 25px;
+        .food-picture {
+          flex: 0 0 95px;
+          margin-right: 11px;
+        }
+        .content {
+          flex: 1;
+          position: relative;
+          .name {
+            margin-bottom: 10px;
+            padding-right: 27px;
+            line-height: 21px;
+            color: #333333;
+            font-size: 16px;
+          }
+          .extra {
+            margin-bottom: 7px;
+            color: #bfbfbf;
+            font-size: 10px;
+            .saled {
+              margin-right: 14px;
+            }
+          }
+          .product {
+            height: 15px;
+            margin-bottom: 6px;
+          }
+          .price {
+            font-size: 0;
+            .text {
+              color: #fb4e44;
+              font-size: 14px;
+            }
+            .unit {
+              color: #bfbfbf;
+              font-size: 12px;
+            }
+          }
+          .control-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
 }
-.goods .menu-wrapper {
-  flex: 0 0 85px;
-  background: #f4f4f4;
-}
-.goods .menu-wrapper .menu-item {
-  position: relative;
-  padding: 16px 23px 15px 10px;
-  border-bottom: 1px solid #e4e4e4;
-}
-.goods .menu-wrapper .menu-item.current {
-  margin-top: -1px;
-  background: white;
-  font-weight: bold;
-}
-.goods .menu-wrapper .menu-item:first-child.current {
-  margin-top: 1px;
-}
-.goods .menu-wrapper .menu-item img {
-  width: 15px;
-  height: 15px;
-  vertical-align: middle;
-}
-.goods .menu-wrapper .menu-item .text {
-  line-height: 17px;
-  color: #333333;
-  font-size: 13px;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.goods .menu-wrapper .menu-item .num {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: red;
-  line-height: 13px;
-  color: white;
-  font-size: 7px;
-  text-align: center;
-}
-
-.goods .foods-wrapper {
-  flex: 1;
-}
-/* 专场 */
-.goods .foods-wrapper .operation-list {
-  padding: 11px 11px 0 11px;
-  border-bottom: 1px solid #e4e4e4;
-  height: 205px;
-}
-.goods .foods-wrapper .operation-list img {
-  width: 100%;
-  margin-bottom: 11px;
-  border-radius: 5px;
-}
-/* 具体分类 */
-.goods .foods-wrapper .food-list {
-  padding: 11px;
-}
- .food-list .title {
-  height: 13px;
-  padding-left: 7px;
-  margin-bottom: 12px;
-  background: url("../assets/img/btn_yellow_highlighted@2x.png")
-    no-repeat left center;
-  background-size: 2px 10px;
-  font-size: 13px;
-}
- .food-list .food-item {
-  display: flex;
-  position: relative;
-  margin-bottom: 25px;
-}
- .food-list .food-item .food-picture {
-  flex: 0 0 95px;
-  margin-right: 11px;
-}
- .food-list .foods-item .content {
-  flex: 1;
-  position: relative;
-}
-/* 具体内容 */
- .food-list .food-item .content .name {
-  margin-bottom: 10px;
-  padding-right: 27px;
-  line-height: 21px;
-  color: #333333;
-  font-size: 16px;
-}
-
- .food-item .content .extra {
-  margin-bottom: 7px;
-  color: #bfbfbf;
-  font-size: 10px;
-}
- .food-item .content .extra .saled {
-  margin-right: 14px;
-}
- .food-item .content .product {
-  height: 15px;
-  margin-bottom: 6px;
-}
- .food-item .content .price {
-  font-size: 0;
-}
- .food-item .content .price .text {
-  color: #fb4e44;
-  font-size: 14px;
-}
- .food-item .content .price .unit {
-  color: #bfbfbf;
-  font-size: 12px;
-}
- .food-item .content .control-wrapper {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-
 </style>

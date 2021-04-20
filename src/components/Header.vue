@@ -113,216 +113,216 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
   height: 130px;
   padding-top: 20px;
   background-size: 100% 135%;
   background-position: center -12px;
-}
-.header .top-wrapper {
-  position: relative;
-}
-.top-wrapper .back-wrapper {
-  position: absolute;
-  width: 50px;
-  height: 31px;
-  line-height: 31px;
-  color: white;
-  text-align: center;
-}
-.top-wrapper .search-wrapper {
-  height: 31px;
-  padding: 0 130px 0 50px;
-}
-.search-wrapper .searchIcon {
-  position: absolute;
-  width: 28px;
-  height: 31px;
-  line-height: 31px;
-  text-align: center;
-}
-.search-wrapper .search {
-  width: 100%;
-  height: 29px;
-  padding-left: 28px;
-  border: none;
-  border-radius: 25px;
-  background-color: #ccc;
-  outline: none;
-}
-.top-wrapper .more-wrapper {
-  display: flex;
-  position: absolute;
-  width: 65px;
-  height: 31px;
-  right: 15px;
-  top: 0;
-  text-align: center;
-}
-.more-wrapper .spelling-btn {
-  height: 17px;
-  padding: 1px 3px;
-  margin-top: 5px;
-  border: 1px solid #fff;
-  line-height: 17px;
-  color: #fff;
-  font-size: 10px;
-  text-decoration: none;
-}
-.more-wrapper .more-btn {
-  margin-left: 13px;
-  margin-top: 5px;
-  color: #fff;
-  font-size: 18px;
-}
-.header .content-wrapper {
-  display: flex;
-  height: 50px;
-  padding: 17px 10px 11px;
-  color: #fff;
-  align-items: center;
-}
-.content-wrapper .picUrl {
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  background-size: 135% 100%;
-  background-position: center;
-}
-.content-wrapper .name {
-  margin-left: 18px;
-}
-.content-wrapper .collect {
-  width: 25px;
-  height: 37px;
-  margin-left: 105px;
-  margin-top: 3px;
-  font-size: 12px;
-  text-align: center;
-}
-.collect .iconfont {
-  display: inline-block;
-  margin-bottom: 4px;
-}
-.header .bulletin-wrapper {
-  display: flex;
-  height: 16px;
-  padding: 0 10px;
-  line-height: 16px;
-  color: #fff;
-  font-size: 11px;
-}
-.bulletin-wrapper img {
-  width: 16px;
-  height: 16px;
-}
-.bulletin-wrapper span {
-  margin-left: 6px;
-}
-.bulletin-wrapper .detail {
-  margin-left: 3px;
-}
-.detail .iconfont {
-  font-size: 11px;
-}
-.header .bulletin-detail {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(98, 98, 98, 0.8);
-  z-index: 100;
-}
-.bulletin-detail .detail-wrapper {
-  position: relative;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  padding: 43px 20px 125px;
-}
-.detail-wrapper .main-wrapper {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  background-size: 100% 100%;
-  text-align: center;
-}
-.main-wrapper .top-icon {
-  display: inline-block;
-  width: 60px;
-  height: 60px;
-  margin-top: 40px;
-  border-radius: 5px;
-  background-size: 135% 100%;
-  background-position: center;
-}
-.main-wrapper .name {
-  margin-top: 13px;
-  color: #fff;
-  font-size: 15px;
-}
-.main-wrapper .score {
-  height: 16px;
-  margin-top: 8px;
-  font-size: 0;
-  text-align: center;
-}
-.main-wrapper .score .star {
-  display: inline-block;
-}
-.main-wrapper .score span {
-  display: inline-block;
-  color: white;
-  font-size: 10px;
-}
-.main-wrapper .tip {
-  margin-top: 8px;
-  color: #bababc;
-  font-size: 11px;
-}
-.main-wrapper .tip i {
-  margin: 0 7px;
-}
-.main-wrapper .time {
-  margin-top: 13px;
-  color: #bababc;
-  font-size: 11px;
-}
-.main-wrapper .discounts {
-  padding: 0 20px;
-  margin-top: 20px;
-}
-.main-wrapper .discounts p {
-  padding-top: 20px;
-  border-top: 1px solid #bababc;
-}
-.main-wrapper .discounts img {
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-.main-wrapper .discounts span {
-  font-size: 11px;
-  line-height: 16px;
-  color: white;
-}
-.detail-wrapper .close-btn {
-  display: inline-block;
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(140, 140, 140, 0.9);
-  border-radius: 50%;
-  background: rgba(118, 118, 118, 0.7);
-  line-height: 38px;
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  transform: translateX(-50%);
+  .top-wrapper {
+    position: relative;
+    .back-wrapper {
+      position: absolute;
+      width: 50px;
+      height: 31px;
+      line-height: 31px;
+      color: white;
+      text-align: center;
+    }
+    .search-wrapper {
+      height: 31px;
+      padding: 0 130px 0 50px;
+      .searchIcon {
+        position: absolute;
+        width: 28px;
+        height: 31px;
+        line-height: 31px;
+        text-align: center;
+      }
+      .search {
+        width: 100%;
+        height: 29px;
+        padding-left: 28px;
+        border: none;
+        border-radius: 25px;
+        background-color: #ccc;
+        outline: none;
+      }
+    }
+    .more-wrapper {
+      display: flex;
+      position: absolute;
+      width: 65px;
+      height: 31px;
+      right: 15px;
+      top: 0;
+      text-align: center;
+      .spelling-btn {
+        height: 17px;
+        padding: 1px 3px;
+        margin-top: 5px;
+        border: 1px solid #fff;
+        line-height: 17px;
+        color: #fff;
+        font-size: 10px;
+        text-decoration: none;
+      }
+      .more-btn {
+        margin-left: 13px;
+        margin-top: 5px;
+        color: #fff;
+        font-size: 18px;
+      }
+    }
+  }
+  .content-wrapper {
+    display: flex;
+    height: 50px;
+    padding: 17px 10px 11px;
+    color: #fff;
+    align-items: center;
+    .picUrl {
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      background-size: 135% 100%;
+      background-position: center;
+    }
+    .name {
+      margin-left: 18px;
+    }
+    .collect {
+      width: 25px;
+      height: 37px;
+      margin-left: 105px;
+      margin-top: 3px;
+      font-size: 12px;
+      text-align: center;
+      .iconfont {
+        display: inline-block;
+        margin-bottom: 4px;
+      }
+    }
+  }
+  .bulletin-wrapper {
+    display: flex;
+    height: 16px;
+    padding: 0 10px;
+    line-height: 16px;
+    color: #fff;
+    font-size: 11px;
+    img {
+      width: 16px;
+      height: 16px;
+    }
+    span {
+      margin-left: 6px;
+    }
+    .detail {
+      margin-left: 3px;
+      .iconfont {
+        font-size: 11px;
+      }
+    }
+  }
+  .bulletin-detail {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(98, 98, 98, 0.8);
+    z-index: 100;
+    .detail-wrapper {
+      position: relative;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding: 43px 20px 125px;
+      .main-wrapper {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-size: 100% 100%;
+        text-align: center;
+        .top-icon {
+          display: inline-block;
+          width: 60px;
+          height: 60px;
+          margin-top: 40px;
+          border-radius: 5px;
+          background-size: 135% 100%;
+          background-position: center;
+        }
+        .name {
+          margin-top: 13px;
+          color: #fff;
+          font-size: 15px;
+        }
+        .score {
+          height: 16px;
+          margin-top: 8px;
+          font-size: 0;
+          text-align: center;
+          .star {
+            display: inline-block;
+          }
+          span {
+            display: inline-block;
+            color: white;
+            font-size: 10px;
+          }
+        }
+        .tip {
+          margin-top: 8px;
+          color: #bababc;
+          font-size: 11px;
+          i {
+            margin: 0 7px;
+          }
+        }
+        .time {
+          margin-top: 13px;
+          color: #bababc;
+          font-size: 11px;
+        }
+        .discounts {
+          padding: 0 20px;
+          margin-top: 20px;
+          p {
+            padding-top: 20px;
+            border-top: 1px solid #bababc;
+            img {
+              width: 16px;
+              height: 16px;
+              margin-right: 6px;
+              vertical-align: middle;
+            }
+            span {
+              font-size: 11px;
+              line-height: 16px;
+              color: white;
+            }
+          }
+        }
+      }
+      .close-btn {
+        display: inline-block;
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(140, 140, 140, 0.9);
+        border-radius: 50%;
+        background: rgba(118, 118, 118, 0.7);
+        line-height: 38px;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        transform: translateX(-50%);
+      }
+    }
+  }
 }
 
 .bulletin-enter-from,

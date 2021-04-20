@@ -6,7 +6,7 @@ export default createStore({
     seller: {},
     goods: {},
     ratings: {},
-    selectedFood: {}
+    selectedFood: {},
   },
   getters: {
     commentNum (state) {
@@ -63,7 +63,7 @@ export default createStore({
     },
     setRatings (state, payload) {
       state.ratings = payload
-    }
+    },
   },
   actions: {
     getSeller ({ state, commit }) {

@@ -79,130 +79,147 @@ export default {
     ...mapState(["seller"]),
   },
   methods: {
-    ...mapActions(["getSeller"])
-  },
-  created () {
-    this.getSeller()
-  },
-  updated () {
-    if (this.seller.poi_env.thumbnails_url_list) {
-      let imgW = this.$refs.picsItem.clientWidth;
-      let marginR = 11;
-      let width = (imgW + marginR) * this.seller.poi_env.thumbnails_url_list.length;
+    ...mapActions(["getSeller"]),
+    initScroll () {
+      if (this.seller.poi_env.thumbnails_url_list) {
+        let imgW = this.$refs.picsItem.clientWidth;
+        let marginR = 11;
+        let width = (imgW + marginR) * this.seller.poi_env.thumbnails_url_list.length;
 
-      this.$refs.picsList.style.width = width + 'px';
-      this.picsScroll = new BScroll(this.$refs.picsView, {
-        scrollX: true,
+        this.$refs.picsList.style.width = width + 'px';
+        this.picsScroll = new BScroll(this.$refs.picsView, {
+          scrollX: true,
+          disableMouse: false,//启用鼠标拖动
+          disableTouch: false//启用手指触摸
+        })
+      }
+      this.sellerScroll = new BScroll(this.$refs.sellerView, {
+        click: true,
+        mouseWheel: true,//开启鼠标滚轮
         disableMouse: false,//启用鼠标拖动
         disableTouch: false//启用手指触摸
       })
     }
-    this.sellerScroll = new BScroll(this.$refs.sellerView, {
-      click: true,
-      mouseWheel: true,//开启鼠标滚轮
-      disableMouse: false,//启用鼠标拖动
-      disableTouch: false//启用手指触摸
-    })
-  }
+  },
+  mounted () {
+    this.getSeller()
+  },
+  watch: {
+    seller () {
+      this.$nextTick(() => {
+        this.initScroll()
+      })
+    }
+  },
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .iconfont {
   margin-right: 10px;
   color: #999999;
 }
+@mixin img-span {
+  img {
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  span {
+    vertical-align: middle;
+  }
+}
+$bg-f4: "#f4f4f4";
+$pt-15: 15px;
+$font-14: 14px;
+
 .seller {
   position: absolute;
   left: 0;
   top: 191px;
   bottom: 0;
   width: 100%;
-  background-color: #f4f4f4;
+  background-color: $bg-f4;
   overflow: hidden;
-}
-.seller .seller-wrapper {
-  background-color: #fff;
-}
-.seller .seller-view {
-  padding-left: 15px;
-}
-.seller .seller-view .address-wrapper {
-  display: flex;
-  height: 50px;
-  padding: 16px 0;
-  border-bottom: 1px solid #f4f4f4;
-}
-.seller .seller-view .address-wrapper .address-left {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  padding-right: 25px;
-  font-size: 15px;
-  line-height: 20px;
-}
-.seller .seller-view .address-wrapper .address-right {
-  flex: 0 0 60px;
-  border-left: 1px solid #999999;
-  text-align: center;
-  line-height: 50px;
-}
-.seller .seller-view .address-wrapper .address-right .iconfont {
-  margin-right: 0;
-  font-size: 25px;
-}
-.seller .seller-view .pics-wrapper {
-  padding: 10px 0;
-  border-bottom: 1px solid #f4f4f4;
-  white-space: nowrap;
-  overflow: hidden;
-}
-.seller .seller-view .pics-wrapper .pics-item {
-  display: inline-block;
-  width: 93px;
-  height: 75px;
-  margin-right: 11px;
-}
-.seller .seller-view .pics-wrapper .pics-item img {
-  width: 100%;
-  height: 100%;
-}
-.seller .seller-view .safety-wrapper {
-  position: relative;
-  font-size: 14px;
-}
-.seller .seller-view .safety-wrapper .right {
-  position: absolute;
-  right: 15px;
-}
-
-.seller .tip-wrapper {
-  padding-left: 15px;
-  font-size: 14px;
-}
-.seller .tip-wrapper .delivery-wrapper {
-  border-bottom: 1px solid #f4f4f4;
-}
-
-.seller .other-wrapper {
-  padding-left: 15px;
-  font-size: 14px;
-}
-.seller .other-wrapper .server-wrapper {
-  display: flex;
-  border-bottom: 1px solid #f4f4f4;
-}
-.seller .other-wrapper .server-wrapper .left {
-  flex: 0 0 100px;
-}
-.seller .other-wrapper .server-wrapper .poi-server img,
-.seller .other-wrapper .discounts-wrapper .discounts-item img {
-  margin-right: 10px;
-  vertical-align: middle;
-}
-.seller .other-wrapper .server-wrapper .poi-server span,
-.seller .other-wrapper .discounts-wrapper .discounts-item span {
-  vertical-align: middle;
+  .seller-wrapper {
+    background-color: #fff;
+  }
+  .seller-view {
+    padding-left: $pt-15;
+    .address-wrapper {
+      display: flex;
+      height: 50px;
+      padding: 16px 0;
+      border-bottom: 1px solid $bg-f4;
+      .address-left {
+        display: flex;
+        flex: 1;
+        align-items: center;
+        padding-right: 25px;
+        font-size: 15px;
+        line-height: 20px;
+      }
+      .address-right {
+        flex: 0 0 60px;
+        border-left: 1px solid #999999;
+        text-align: center;
+        line-height: 50px;
+        .iconfont {
+          margin-right: 0;
+          font-size: 25px;
+        }
+      }
+    }
+    .pics-wrapper {
+      padding: 10px 0;
+      border-bottom: 1px solid $bg-f4;
+      white-space: nowrap;
+      overflow: hidden;
+      .pics-item {
+        display: inline-block;
+        width: 93px;
+        height: 75px;
+        margin-right: 11px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .safety-wrapper {
+      position: relative;
+      font-size: $font-14;
+      .right {
+        position: absolute;
+        right: 15px;
+      }
+    }
+  }
+  .tip-wrapper {
+    padding-left: $pt-15;
+    font-size: $font-14;
+    .delivery-wrapper {
+      border-bottom: 1px solid $bg-f4;
+    }
+  }
+  .other-wrapper {
+    padding-left: $pt-15;
+    font-size: $font-14;
+    .server-wrapper {
+      display: flex;
+      border-bottom: 1px solid $bg-f4;
+      .left {
+        flex: 0 0 100px;
+      }
+      .poi-server {
+        @include img-span;
+      }
+    }
+    .discounts-wrapper {
+      .discounts-item {
+        @include img-span;
+      }
+    }
+  }
 }
 
 .item-padding {
