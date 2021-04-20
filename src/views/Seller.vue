@@ -128,7 +128,7 @@ export default {
     vertical-align: middle;
   }
 }
-$bg-f4: "#f4f4f4";
+$bg-f4: #f4f4f4;
 $pt-15: 15px;
 $font-14: 14px;
 

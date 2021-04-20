@@ -95,24 +95,32 @@ export default {
     food (data) {
       if (data) {
         this.$nextTick(() => {
-          this.foodScroll = new BScroll(this.$refs.foodView, {
-            click: true,
-            mouseWheel: true,//开启鼠标滚轮
-            disableMouse: false,//启用鼠标拖动
-            disableTouch: false//启用手指触摸
-          })
+          if (this.foodScroll) {
+            this.foodScroll.refresh()
+          } else {
+            this.foodScroll = new BScroll(this.$refs.foodView, {
+              click: true,
+              mouseWheel: true,//开启鼠标滚轮
+              disableMouse: false,//启用鼠标拖动
+              disableTouch: false//启用手指触摸
+            })
+          }
         })
       }
     }
   },
   mounted () {
     if (this.food) {
-      this.foodScroll = new BScroll(this.$refs.foodView, {
-        click: true,
-        mouseWheel: true,//开启鼠标滚轮
-        disableMouse: false,//启用鼠标拖动
-        disableTouch: false//启用手指触摸
-      })
+      if (this.foodScroll) {
+        this.foodScroll.refresh()
+      } else {
+        this.foodScroll = new BScroll(this.$refs.foodView, {
+          click: true,
+          mouseWheel: true,//开启鼠标滚轮
+          disableMouse: false,//启用鼠标拖动
+          disableTouch: false//启用手指触摸
+        })
+      }
     }
   },
 }

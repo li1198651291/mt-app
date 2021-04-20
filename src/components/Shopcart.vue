@@ -91,6 +91,13 @@ export default {
           }
         })
       }
+    },
+    selectedFoods () {
+      if (this.fold == false) {
+        this.$nextTick(() => {
+          this.shopScroll.refresh()
+        })
+      }
     }
   },
   methods: {
@@ -112,6 +119,7 @@ export default {
     },
     goDetail (id) {
       this.$router.push({ name: "GoodDetail", params: { id: id } })
+      this.fold = true;
     }
   }
 }
